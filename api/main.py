@@ -7,7 +7,7 @@ import tensorflow as tf
 
 app= FastAPI()
 
-MODEL = tf.keras.models.load_model("../saved_models/1")
+MODEL = tf.keras.models.load_model("C:\\Users\\Betul\\Desktop\\betul\\ornekler\\deep_learning\\potatodisease\\Potato-Disease-Classification-Using-CNN\\saved_models\\1")
 CLASS_NAMES = ["Potato___Early_blight","Potato___Late_blight", "Potato___healthy"]
 
 @app.get("/ping")
