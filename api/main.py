@@ -4,8 +4,25 @@ import numpy as np
 from io import BytesIO #normal bir dosya gibi bytelarla işlem yapıyo
 from PIL import Image #image okumak için
 import tensorflow as tf
+from fastapi.middleware.cors import CORSMiddleware
 
 app= FastAPI()
+
+# CORS, bir web tarayıcısının farklı kökenlerden
+# (origin) gelen kaynaklara erişim sağlama kurallarını belirler.
+
+origins=[
+    "http://localhost",
+    "http://localhost:3000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 MODEL = tf.keras.models.load_model("C:\\Users\\Betul\\Desktop\\betul\\ornekler\\deep_learning\\potatodisease\\Potato-Disease-Classification-Using-CNN\\saved_models\\1")
 CLASS_NAMES = ["Potato___Early_blight","Potato___Late_blight", "Potato___healthy"]
